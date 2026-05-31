@@ -1,0 +1,19 @@
+trust-remote-code: True
+
+model: Qwen/Qwen3.5-2B
+reasoning-parser: qwen3 
+tool-call-parser: qwen3_coder
+enable-auto-tool-choice: True 
+
+dtype: float16
+kv-cache-dtype: fp8
+max-model-len: 2048
+tokenizer-mode: qwen_vl
+
+enforce-eager: True
+gpu-memory-utilization: 0.8
+cpu-offload-gb: 4
+max-num-seqs: 2
+block-size: 16
+
+port: 8000 

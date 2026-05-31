@@ -1,0 +1,28 @@
+name: vllm
+
+services:
+    vllm-chat:
+        container_name: chat
+        image: vllm/vllm-openai:cu130-nightly
+
+        volumes:
+            - ~/.cache/huggingface:/root/.cache/huggingface
+            - ./config/${CHAT_CONFIG}:/.config/chat.yml
+
+        ports:
+            - "8000:8000"
+        
+        deploy:
+            resources:
+                reservations:
+                    devices:
+                          - driver: nvidia
+                            count: 1
+                            capabilities: [gpu]
+
+        command: >
+            --config /.config/chat.yml
+
+volumes:
+    DataThreads:
+    DataEmbeddings:
