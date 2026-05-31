@@ -9,6 +9,9 @@ services:
             - ~/.cache/huggingface:/root/.cache/huggingface
             - ./config/${CHAT_CONFIG}:/.config/chat.yml
 
+        environment:
+            HF_TOKEN: ${HF_TOKEN}
+
         ports:
             - "8000:8000"
         
