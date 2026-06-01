@@ -1,0 +1,15 @@
+trust-remote-code: True
+
+model: Qwen/Qwen3-VL-Embedding-2B
+runner: pooling
+
+dtype: float16
+kv-cache-dtype: fp8
+max-model-len: 8192
+
+enforce-eager: True
+gpu-memory-utilization: 0.5
+kv-cache-memory-bytes: 512M
+max-num-seqs: 4
+
+port: 8000 
