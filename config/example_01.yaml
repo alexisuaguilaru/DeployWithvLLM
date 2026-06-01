@@ -2,7 +2,6 @@ trust-remote-code: True
 
 model: Qwen/Qwen3.5-2B
 reasoning-parser: qwen3 
-tool-call-parser: qwen3_coder
 enable-auto-tool-choice: True 
 
 dtype: float16

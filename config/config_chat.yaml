@@ -1,8 +1,7 @@
 trust-remote-code: True
 
 model: cyankiwi/Qwen3.5-2B-AWQ-4bit
-reasoning-parser: qwen3
-tool-call-parser: qwen3_coder
+tool-call-parser: qwen3_xml
 enable-auto-tool-choice: True 
 
 max-model-len: 8192
