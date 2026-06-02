@@ -10,8 +10,9 @@
   - [vLLM](#vllm)
   - [LangChain Ecosystem](#langchain-ecosystem)
   - [Open WebUI](#open-webui)
-- [Methodology](#methodology)
+- [Methodology and Configurations](#methodology-and-configurations)
   - [Serving Local Models with vLLM via Docker](#serving-local-models-with-vllm-via-docker)
+  - [Monitoring vLLM Instances with Prometheus and Grafana](#monitoring-vllm-instances-with-prometheus-and-grafana)
 - [Installation and Usage](#installation-and-usage)
 - [Experiments](#experiments)
 - [License](#license)
@@ -65,7 +66,7 @@ Develop a minimal, **end-to-end solution to deploy and serve local LLMs** using 
 * [**Admin Dashboard and Chat Auditing**](https://docs.openwebui.com/features/administration/): Centralized administration panel to manage models, monitor active users, analyze basic usage statistics, and audit chat histories for compliance and safety.
 
 ---
-## Methodology
+## Methodology and Configurations
 
 ### Serving Local Models with vLLM via Docker
 Deploying Large Language Models (LLMs) via Docker containers stands as the industry standard for production environments. This encapsulation guarantees a deterministic, reproducible environment isolated from host dependency conflicts.
@@ -87,6 +88,17 @@ To fine-tune the inference engine's throughput, memory allocation, and behaviora
 
 **Concurrency**
 * `--max-num-seqs`: Defines the maximum number of concurrent sequences can process simultaneously in a single iteration step.
+
+### Monitoring vLLM Instances with Prometheus and Grafana
+Ensuring the reliability, efficiency, and scalability of an LLM in production requires comprehensive telemetry. While raw inference logging provides textual history, an observability stack composed of Prometheus and Grafana enables real-time, quantitative auditing of the underlying hardware performance and serving throughput.
+
+**[Prometheus](https://prometheus.io/): Time-Series Metrics Collection**
+Prometheus operates as a highly scalable, time-series data store and monitoring server. It utilizes a pull-based architecture, actively scraping HTTP endpoints that expose metrics in a standardized, plaintext format.
+
+**[Grafana](https://grafana.com/): Analytics and Real-Time Visualization**
+Grafana serves as the centralized orchestration layer for data visualization and operational dashboards. It connects directly to Prometheus as an upstream data source.
+
+By leveraging the baseline configurations provided by the official [vLLM Observability Examples](https://github.com/vllm-project/vllm/tree/main/examples/observability), the dashboard is tailored to track critical LLM performance metrics
 
 
 ---
