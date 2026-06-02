@@ -11,8 +11,7 @@
   - [LangChain Ecosystem](#langchain-ecosystem)
   - [Open WebUI](#open-webui)
 - [Methodology](#methodology)
-  - [AI Usage](#ai-usage)
-  - [Relevant Parameters for vLLM](#relevant-parameters-for-vllm)
+  - [Serving Local Models with vLLM via Docker](#serving-local-models-with-vllm-via-docker)
 - [Installation and Usage](#installation-and-usage)
 - [Experiments](#experiments)
 - [License](#license)
@@ -68,9 +67,26 @@ Develop a minimal, **end-to-end solution to deploy and serve local LLMs** using 
 ---
 ## Methodology
 
-### AI Usage
+### Serving Local Models with vLLM via Docker
+Deploying Large Language Models (LLMs) via Docker containers stands as the industry standard for production environments. This encapsulation guarantees a deterministic, reproducible environment isolated from host dependency conflicts.
 
-### Relevant Parameters for vLLM
+To fine-tune the inference engine's throughput, memory allocation, and behavioral capabilities, the following critical CLI parameters and configuration flags must be defined:
+
+**Model precision configurations**
+* `--model`: The Hugging Face model identifier.
+* `--dtype`: Specifies the data type for model weights and activations.
+* `--quantization`: Defines the quantization method used to shrink the model's VRAM footprint. It supports loading pre-quantized weights or executing dynamic, on-the-fly quantization layers.
+
+**Tool Calling Features**
+* `--tool-call-parser`: Specifies the parser template used to structuralize and interpret the model's output when generating tool-invocation requests.
+
+**Memory Management**
+* `--gpu-memory-utilization`: Fraction of GPU memory to be earmarked for the model execution and the PagedAttention KV Cache
+* `--cpu-offload-gb`:Allocates a specific amount of host RAM to offload weights or KV Cache blocks when the model size exceeds physical VRAM limits.
+* `max-model-len`: Establishes the hard limit for the model's maximum context window (tokens).
+
+**Concurrency**
+* `--max-num-seqs`: Defines the maximum number of concurrent sequences can process simultaneously in a single iteration step.
 
 
 ---
