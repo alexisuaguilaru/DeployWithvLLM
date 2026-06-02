@@ -8,6 +8,7 @@ max-model-len: -1
 tokenizer-mode: qwen_vl
 
 gpu-memory-utilization: 0.8
+enable-prefix-caching: False
 max-num-seqs: 1
 block-size: 16
 
