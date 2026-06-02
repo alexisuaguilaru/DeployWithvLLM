@@ -2,8 +2,12 @@ name: vllm
 
 services:
     vllm-chat:
-        container_name: chat
+        container_name: vllm_engine
         image: vllm/vllm-openai:cu130-nightly
+
+        depends_on:
+            - prometheus
+            - grafana
 
         volumes:
             - ~/.cache/huggingface:/root/.cache/huggingface
@@ -26,6 +30,36 @@ services:
         command: >
             --config /.config/chat.yml
 
+    prometheus:
+        container_name: metrics_collector
+        image: prom/prometheus:latest
+
+        volumes:
+            - ./metrics/prometheus.yml:/etc/prometheus/prometheus.yml
+            - DataPrometheus:/prometheus
+
+        ports:
+            - "9090:9090"
+
+        command:
+            - '--storage.tsdb.path=/prometheus'
+            - '--storage.tsdb.retention.time=15d'
+
+    grafana:
+        container_name: metrics_dashboard
+        image: grafana/grafana:latest
+
+        depends_on:
+            - prometheus
+
+        volumes:
+            - DataGrafana:/var/lib/grafana
+
+        ports:
+            - "3000:3000"
+
 volumes:
     DataThreads:
     DataEmbeddings:
+    DataPrometheus:
+    DataGrafana:
