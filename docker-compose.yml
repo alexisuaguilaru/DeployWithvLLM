@@ -30,12 +30,25 @@ services:
         command: >
             --config /.config/chat.yml
 
+    ui-chat:
+        container_name: ui_app
+        image: ghcr.io/open-webui/open-webui:main-slim
+
+        depends_on:
+            - vllm-chat
+
+        volumes:
+            - DataOpenWebUI:/app/backend/data
+
+        ports:
+            - "8080:8080"
+
     prometheus:
         container_name: metrics_collector
         image: prom/prometheus:latest
 
         volumes:
-            - ./metrics/prometheus.yml:/etc/prometheus/prometheus.yml
+            - ./metrics/prometheus.yml:/prometheus/prometheus.yml
             - DataPrometheus:/prometheus
 
         ports:
@@ -59,7 +72,6 @@ services:
             - "3000:3000"
 
 volumes:
-    DataThreads:
-    DataEmbeddings:
+    DataOpenWebUI:
     DataPrometheus:
     DataGrafana:

@@ -1,4 +1,4 @@
-# How Deploy AI Models with [vLLM](https://vllm.ai/) <!-- omit in toc -->
+# How to Deploy AI Models with [vLLM](https://vllm.ai/) <!-- omit in toc -->
 
 ---
 ## Table of Contents <!-- omit in toc -->
@@ -13,6 +13,7 @@
 - [Methodology and Configurations](#methodology-and-configurations)
   - [Serving Local Models with vLLM via Docker](#serving-local-models-with-vllm-via-docker)
   - [Monitoring vLLM Instances with Prometheus and Grafana](#monitoring-vllm-instances-with-prometheus-and-grafana)
+  - [Interacting via Open WebUI](#interacting-via-open-webui)
 - [Installation and Usage](#installation-and-usage)
 - [Experiments](#experiments)
 - [License](#license)
@@ -98,7 +99,10 @@ Prometheus operates as a highly scalable, time-series data store and monitoring 
 **[Grafana](https://grafana.com/): Analytics and Real-Time Visualization**
 Grafana serves as the centralized orchestration layer for data visualization and operational dashboards. It connects directly to Prometheus as an upstream data source.
 
-By leveraging the baseline configurations provided by the official [vLLM Observability Examples](https://github.com/vllm-project/vllm/tree/main/examples/observability), the dashboard is tailored to track critical LLM performance metrics
+By leveraging the baseline configurations provided by the official [vLLM Observability Examples](https://github.com/vllm-project/vllm/tree/main/examples/observability), the dashboard is tailored to track critical LLM performance metrics.
+
+### Interacting via Open WebUI
+While backend metrics and APIs validate infrastructure stability, testing the actual user experience requires an intuitive, real-world interface. To achieve this, Open WebUI is integrated as the front-end conversational layer of the stack. Open WebUI provides a clean, responsive, and familiar web-based chat interface connected directly to the local vLLM engine.
 
 
 ---
