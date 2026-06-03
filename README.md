@@ -8,7 +8,6 @@
 - [Particular Aims](#particular-aims)
 - [Tech Stack and General Knowledge](#tech-stack-and-general-knowledge)
   - [vLLM](#vllm)
-  - [LangChain Ecosystem](#langchain-ecosystem)
   - [Open WebUI](#open-webui)
 - [Methodology and Configurations](#methodology-and-configurations)
   - [Serving Local Models with vLLM via Docker](#serving-local-models-with-vllm-via-docker)
@@ -39,7 +38,6 @@ Develop a minimal, **end-to-end solution to deploy and serve local LLMs** using 
 ## Particular Aims
 * Configure and deploy the base vLLM engine instance, integrating a real-time monitoring with [Grafana](https://grafana.com/) to track key production metrics.
 * Connect [Open WebUI](https://openwebui.com/) to the vLLM OpenAI-compatible endpoint to establish an intuitive, chat-based interface.
-* Orchestrate a production-grade AI agent leveraging the [LangChain ecosystem](https://www.langchain.com/), using LangGraph Platform for stateful logic and LangSmith for execution tracing.
 
 
 ---
@@ -52,12 +50,6 @@ Develop a minimal, **end-to-end solution to deploy and serve local LLMs** using 
 * **OpenAI Ecosystem**: Expose an [OpenAI-compatible API](https://bentoml.com/llm/model-interaction/openai-compatible-api), ensuring seamless drop-in integration with UI clients and agentic frameworks.
 * **Hardware Agnostic**: Broad support across diverse [GPU architectures](https://docs.vllm.ai/en/latest/getting_started/installation/gpu/) (NVIDIA, AMD, Intel, etc.).
 * **Dynamic Multi-LoRA**: Native capabilities to [integrate and swap multiple](https://docs.vllm.ai/en/latest/features/lora/) [LoRA adapters](https://huggingface.co/papers/2106.09685) concurrently on a single base model without sacrificing batching performance.
-
-### [LangChain Ecosystem](https://www.langchain.com/)
-* **AI Agent and Components Abstraction ([LangChain](https://docs.langchain.com/oss/python/langchain/overview))**: A robust orchestration library providing [standardized interfaces](https://reference.langchain.com/python/langchain) for prompts, memory, document loaders, and tools.
-* **Stateful Multi-Agent Orchestration ([LangGraph](https://docs.langchain.com/oss/python/langgraph/overview))**: Built as a graph-based framework to model complex, cyclic, and non-linear agent behaviors as state machines, featuring native persistence, multi-agent cooperation, and Human-in-the-loop intervention points.
-* **Advanced LLM Observability ([LangSmith](https://docs.langchain.com/langsmith/home)/[LangGraph](https://docs.langchain.com/oss/python/langgraph/overview)+[LangFuse](https://langfuse.com/))**: Offers end-to-end telemetry and execution tracing to visually debug prompts, profile step-by-step latency, inspect tool invocations, and log token consumption.
-* **Provider Agnostic Ecosystem**: Inherently compatible with local high-performance backends (like vLLM or Ollama) and cloud enterprise providers (OpenAI, Anthropic) via unified wrapper classes.
 
 ### [Open WebUI](https://openwebui.com/)
 * **ChatGPT-like UI**: A self-hosted, highly responsive, and feature-rich user interface designed for seamless interaction with [local and cloud AI](https://docs.openwebui.com/getting-started/quick-start/connect-a-provider/) solutions.
