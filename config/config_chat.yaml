@@ -1,15 +1,15 @@
 trust-remote-code: True
 
-model: cyankiwi/Qwen3.5-2B-AWQ-4bit
+model: cyankiwi/Qwen3.5-4B-AWQ-4bit
+reasoning-parser: qwen3
 tool-call-parser: qwen3_xml
 enable-auto-tool-choice: True 
 
 max-model-len: -1
-tokenizer-mode: qwen_vl
+language-model-only: True
 
-gpu-memory-utilization: 0.8
+gpu-memory-utilization: 0.82
 enable-prefix-caching: False
 max-num-seqs: 1
-block-size: 16
 
 port: 8000 
