@@ -23,6 +23,7 @@
 - [Results](#results)
   - [Open WebUI](#open-webui-1)
   - [Grafana](#grafana)
+- [AI Acknowledgments](#ai-acknowledgments)
 - [License](#license)
 
 
@@ -180,6 +181,13 @@ The image below showcases the conversational interface running locally. This int
 The Prometheus scraper feeds data into Grafana in real-time. The dashboard captures critical hardware performance and backend engine execution metrics.
 
 ![Grafana vLLM Dashboard](./resources/grafana.png)
+
+
+## AI Acknowledgments
+During the engineering and documentation phases of this project, Large Language Models (LLMs) were utilized as development assistants. Specifically, AI tools were leveraged for:
+* *Code Optimization*: Assisting in the syntax structuring of the configuration files, refining the initialization parameters for the vLLM engine, and accelerating documentation comprehension.
+* *Documentation Refinement*: Enhancing the technical precision, terminology standards, and definitions across this [README.md](./README.md) file.
+
 
 ---
 ## License
