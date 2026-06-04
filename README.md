@@ -13,7 +13,9 @@
   - [Serving Local Models with vLLM via Docker](#serving-local-models-with-vllm-via-docker)
   - [Monitoring vLLM Instances with Prometheus and Grafana](#monitoring-vllm-instances-with-prometheus-and-grafana)
   - [Interacting via Open WebUI](#interacting-via-open-webui)
-- [Installation and Usage](#installation-and-usage)
+- [Installation](#installation)
+  - [Prerequisites](#prerequisites)
+  - [Installation Steps](#installation-steps)
 - [Experiments](#experiments)
 - [License](#license)
 
@@ -98,8 +100,42 @@ While backend metrics and APIs validate infrastructure stability, testing the ac
 
 
 ---
-## Installation and Usage
+## Installation
+### Prerequisites
+Ensure the following tools and libraries are installed on your system:
+* Git
+* CUDA: Version 13.0 or higher
+* Docker
 
+### Installation Steps
+1. Clone this repository:
+```bash
+git clone https://github.com/alexisuaguilaru/DeployWithvLLM.git
+cd DeployWithvLLM
+```
+
+2. Initialize the environment configuration file. Open `.env` and set the value of `CHAT_CONFIG` to one of the config file examples for vLLM:
+```bash
+cp .env.example .env
+```
+
+3. Deploy the application stack using Docker Compose
+```bash
+docker compose up -d
+```
+
+4. Configure Grafana dashboard:
+* Navigate to Grafana at http://localhost:3000
+* Log in to your admin account
+* Click "Add Data Source" and select Prometheus. Enter the address: http://prometheus:9090
+* Go to Dashboards and import the template using the file path: [dashboard templete file](./metrics/grafana.json)
+
+5. Configure Open WebUI
+* Access the Open WebUI interface at http://localhost:8080 to log in as an admin
+* Navigate to Settings (Admin Panel)
+* Go to Connections. Add a new OpenAI API endpoint with model endpoint http://vllm-chat:8000/v1
+
+6. Create a new chat session and interact with the model
 
 ---
 ## Experiments
