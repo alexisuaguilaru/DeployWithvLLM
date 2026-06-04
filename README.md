@@ -17,6 +17,9 @@
   - [Prerequisites](#prerequisites)
   - [Installation Steps](#installation-steps)
 - [Experiments](#experiments)
+  - [Hardware Environment](#hardware-environment)
+  - [Methodology](#methodology)
+  - [Configuration Artifacts](#configuration-artifacts)
 - [License](#license)
 
 
@@ -139,6 +142,25 @@ docker compose up -d
 
 ---
 ## Experiments
+To validate the efficiency of vLLM under strict hardware constraints, a series of local deployment experiments were conducted. The primary objective was to maximize throughput and achieve stable concurrency on a consumer-grade laptop GPU without triggering Out-Of-Memory (OOM) errors.
+
+### Hardware Environment
+| Component | Specification |
+| :--- | :--- |
+| GPU | NVIDIA GeForce RTX 4050 Laptop GPU (6GB GDDR6 VRAM) |
+| Host RAM | 16 GB DDR5 |
+
+### Methodology
+Inference capabilities were evaluated through qualitative, interactive conversational workflows using Open WebUI. To ensure both the model weights and the vLLM PagedAttention KV cache allocator could reside simultaneously within the strict 6GB VRAM ceiling, SOTA architectures were deployed utilizing high-efficiency 4-bit AWQ (Activation-aware Weight Quantization) formats.
+
+The following SOTA models were successfully benchmarked:
+* [Qwen3.5-2B-AWQ-4bit](https://huggingface.co/cyankiwi/Qwen3.5-2B-AWQ-4bit): Full vision-conversational model was successfully loaded.
+* [Qwen3.5-4B-AWQ-4bit](https://huggingface.co/cyankiwi/Qwen3.5-4B-AWQ-4bit): Deployed exclusively for text generation tasks under strict memory constraint management.
+
+### Configuration Artifacts
+The exact runtime arguments and container configurations utilized for these runs are fully documented. You can explore the production recipes in the [`./config/`](./config/) directory, which contains setup files for:
+1. High-throughput conversational serving.
+2. Optimized multimodal vision-language endpoints.
 
 
 ---
