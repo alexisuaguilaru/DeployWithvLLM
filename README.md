@@ -28,6 +28,7 @@
 
 ---
 ## Abstract
+This project implements a local **LLMOps solution** focused on **high-throughput AI** serving and **real-time monitoring**. At its core, **vLLM** operates as the high-performance inference engine, optimizing VRAM via **PagedAttention** and exposing an **OpenAI-compatible REST API**. **Open WebUI** integrates seamlessly as the front-end **conversational layer**, providing an **intuitive interface** for live user interaction and baseline model validation. The entire workflow is audited by a **Prometheus and Grafana** observability stack to **track operational metrics**. The architecture was successfully validated using quantized **Qwen3.5** models, delivering an efficient blueprint for **local LLM deployment**.
 
 
 ---
