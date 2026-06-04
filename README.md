@@ -20,6 +20,9 @@
   - [Hardware Environment](#hardware-environment)
   - [Methodology](#methodology)
   - [Configuration Artifacts](#configuration-artifacts)
+- [Results](#results)
+  - [Open WebUI](#open-webui-1)
+  - [Grafana](#grafana)
 - [License](#license)
 
 
@@ -162,6 +165,20 @@ The exact runtime arguments and container configurations utilized for these runs
 1. High-throughput conversational serving.
 2. Optimized multimodal vision-language endpoints.
 
+
+---
+## Results
+Below are the visual and operational validations of the running deployment, demonstrating successful model inference and telemetry collection.
+
+### Open WebUI
+The image below showcases the conversational interface running locally. This interface communicates directly with the vLLM OpenAI-compatible endpoint, enabling multi-turn dialogue the models.
+
+![Open WebUI Chat Interface](./resources/open-webui.png)
+
+### Grafana
+The Prometheus scraper feeds data into Grafana in real-time. The dashboard captures critical hardware performance and backend engine execution metrics.
+
+![Grafana vLLM Dashboard](./resources/grafana.png)
 
 ---
 ## License
